@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.kordamp.ikonli.javafx.StackedFontIcon?>
+
+<BorderPane fx:id="cells" prefHeight="100.0" prefWidth="550.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <center>
+      <AnchorPane style="-fx-background-color: #edf2fb; -fx-background-radius: 8;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label style="-fx-background-color: #61e19a; -fx-background-radius: 4;" text="Packet" textFill="WHITE" StackPane.alignment="BOTTOM_RIGHT">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <StackPane.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <HBox prefHeight="80.0" prefWidth="530.0">
+                     <children>
+                        <StackedFontIcon prefHeight="80.0" prefWidth="83.0" style="-fx-background-color: #395ecd; -fx-background-radius: 8 0 0 8;">
+                           <children>
+                              <FontIcon iconColor="WHITE" iconLiteral="fas-box" iconSize="40" />
+                           </children>
+                        </StackedFontIcon>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="Source:" />
+                                    <TextFlow prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="sourceText" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </TextFlow>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="16.0" prefWidth="146.0" style="-fx-font-weight: bold;" text="Destination:" />
+                                    <TextFlow prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="destinationText" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </TextFlow>
+                                    <Label prefHeight="16.0" prefWidth="98.0" style="-fx-font-weight: bold;" text="Time:" />
+                                    <TextFlow prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="timeText" />
+                                       </children>
+                                    </TextFlow>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label style="-fx-font-weight: bold;" text="Message:" />
+                                    <TextFlow prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="messageText" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </TextFlow>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" top="5.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

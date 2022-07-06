@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="350.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.congestioncontrol.NBPOutRouter.OutRouterView">
+    <children>
+        <BorderPane prefHeight="610.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 8;" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </BorderPane.margin>
+                    <center>
+                        <JFXListView fx:id="packetsListView" style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: black; -fx-border-radius: 8; -fx-border-width: 0.5;" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+            </center>
+            <top>
+                <StackPane style="-fx-background-color: #ebb2092f; -fx-background-radius: 8;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label graphicTextGap="15.0" text="Packets are leaving the Network to Enter the Destination Machine">
+                            <graphic>
+                                <FontIcon iconColor="#edbc09" iconLiteral="far-lightbulb" iconSize="25" />
+                            </graphic>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                    </BorderPane.margin>
+                </StackPane>
+            </top>
+         <bottom>
+            <StackPane style="-fx-background-color: #63e09933; -fx-background-radius: 8;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="monitoringText" graphicTextGap="15.0" style="-fx-font-weight: bold;" text="Monitoring....">
+                     <graphic>
+                        <FontIcon iconColor="#64de97" iconLiteral="fas-network-wired" iconSize="25" text="" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </StackPane>
+         </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

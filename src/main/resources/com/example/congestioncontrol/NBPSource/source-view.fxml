@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="610.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.congestioncontrol.NBPSource.SourceView">
+   <children>
+      <StackPane prefHeight="610.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="380.0" style="-fx-background-color: #edf2fb; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 0.5;">
+               <children>
+                  <StackPane prefHeight="55.0" prefWidth="600.0">
+                     <children>
+                        <JFXTextField fx:id="ipTextField" focusColor="#395ecd" labelFloat="true" prefHeight="0.0" prefWidth="600.0" promptText="Destination Machine IP" style="-jfx-label-float: true;" unFocusColor="BLACK" StackPane.alignment="BOTTOM_CENTER">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <FontIcon fx:id="ipIcon" iconLiteral="fas-laptop" iconSize="16" text="" StackPane.alignment="BOTTOM_RIGHT">
+                           <StackPane.margin>
+                              <Insets bottom="6.0" right="5.0" />
+                           </StackPane.margin>
+                        </FontIcon>
+                     </children>
+                  </StackPane>
+                  <StackPane focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="600.0">
+                     <children>
+                        <JFXTextArea fx:id="msgTextArea" focusColor="#395ecd" labelFloat="true" prefHeight="66.0" prefWidth="600.0" promptText="Enter Your Message" style="-jfx-label-float: true; -fx-background-color: #edf2fb;" unFocusColor="#393838" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXTextArea>
+                        <FontIcon fx:id="ipIcon1" iconLiteral="fab-facebook-messenger" iconSize="22" text="" StackPane.alignment="BOTTOM_RIGHT">
+                           <StackPane.margin>
+                              <Insets bottom="6.0" right="5.0" />
+                           </StackPane.margin>
+                        </FontIcon>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="35.0" />
+                     </VBox.margin>
+                  </StackPane>
+                  <VBox>
+                     <children>
+                        <FlowPane>
+                           <children>
+                              <Label text="Repeat: ">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="repeatMsg" layoutX="10.0" layoutY="10.0" text="1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="times" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" text="time" textFill="#395ecd">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </FlowPane>
+                        <JFXSlider fx:id="repeatSlider" blockIncrement="1.0" max="200.0" showTickLabels="true" showTickMarks="true" stylesheets="@style.css" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="35.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <JFXButton fx:id="sendBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#sendMsgs" prefHeight="39.0" prefWidth="360.0" style="-fx-background-color: #395ecd; -fx-background-radius: 8;" text="Send" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="45.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="sendBtn1" layoutX="10.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#clearFields" prefHeight="39.0" prefWidth="360.0" style="-fx-background-color: red; -fx-background-radius: 8;" text="Clear" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+               <effect>
+                  <DropShadow height="57.95" radius="30.355" width="65.47">
+                     <color>
+                        <Color opacity="0.24904215335845947" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

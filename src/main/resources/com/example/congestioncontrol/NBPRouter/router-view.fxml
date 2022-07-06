@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="610.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.congestioncontrol.NBPRouter.RouterView">
+   <children>
+      <BorderPane prefHeight="610.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 8;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <center>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXListView fx:id="packetsListView" style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: black; -fx-border-radius: 8; -fx-border-width: 0.5;" styleClass="mylistview" StackPane.alignment="CENTER">
+<!--                     <stylesheets>-->
+<!--                        <URL value="@../styles/scrollbar.css" />-->
+<!--                     </stylesheets>-->
+<!--                     <padding>-->
+<!--                        <Insets bottom="80.0" />-->
+<!--                     </padding>-->
+                  </JFXListView>
+                     </children>
+                  </StackPane>
+               </center>
+            </BorderPane>
+         </center>
+         <bottom>
+            <HBox prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="70.0" prefWidth="203.0" style="-fx-background-color: #edf2fb; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <StackPane prefHeight="70.0" prefWidth="242.0">
+                           <children>
+                              <Label alignment="CENTER" graphicTextGap="10.0" prefHeight="48.0" prefWidth="179.0" text="INCOMING PACKETS" wrapText="true">
+                                 <graphic>
+                                    <FontIcon fill="#ee4242" iconLiteral="fas-arrow-down" text="" />
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane minWidth="110.0" prefHeight="70.0">
+                           <children>
+                              <Label fx:id="inPackets" alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #ee4242; -fx-background-radius: 0 8 8 0; -fx-font-size: 18; -fx-font-weight: 700;" text="0" textFill="WHITE" wrapText="true">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="203.0" style="-fx-background-color: #edf2fb; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <StackPane minWidth="110.0" prefHeight="70.0">
+                           <children>
+                              <Label fx:id="outPackets" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #61e19a; -fx-font-size: 18; -fx-font-weight: 700; -fx-background-radius: 8 0 0 8;" text="0" textFill="WHITE" wrapText="true">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="70.0" prefWidth="242.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" prefHeight="48.0" prefWidth="179.0" text="OUTGOING PACKETS" wrapText="true">
+                                 <graphic>
+                                    <FontIcon iconColor="#61e19a" iconLiteral="fas-arrow-up" text="" />
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <StackPane style="-fx-background-color: #ebb2092f; -fx-background-radius: 8;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label graphicTextGap="15.0" text="Packets are in the Network">
+                     <graphic>
+                        <FontIcon iconColor="#edbc09" iconLiteral="far-lightbulb" iconSize="25" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </StackPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
