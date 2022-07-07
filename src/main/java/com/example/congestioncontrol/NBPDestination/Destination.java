@@ -50,7 +50,7 @@ public class Destination {
                 Runtime r = Runtime.getRuntime();
                 Process p = null;
                 System.out.println("des: " + data + ".txt");
-                p = r.exec("gedit"+" "+dest+".txt");
+//                p = r.exec("gedit"+" "+dest+".txt");
             }
         }
 

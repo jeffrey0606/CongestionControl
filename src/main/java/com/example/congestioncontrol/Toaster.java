@@ -27,7 +27,7 @@ public class Toaster {
 
         Platform.runLater(() -> {
             lazyInit();
-            snackbar.show(message, 5000);
+            snackbar.show(message, 1000);
         });
     }
 

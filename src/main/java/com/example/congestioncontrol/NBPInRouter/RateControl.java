@@ -20,6 +20,8 @@ public class RateControl  extends Thread
     String eg;
     long pTimeStamp;
     ServerSocket soc;
+
+    long deliveryTimeDifference = 0;
     long o;
     RateControl()
     {
@@ -86,56 +88,72 @@ public class RateControl  extends Thread
             catch(Exception e){}
             long cTS = pTimeStamp;//d.getTime();
             long tSPacketSend = Fra1.l.remove(0);
-            System.out.println("currentTime on outRouter feedback: " + cTS + " Time Packet Send at inRouter: " + tSPacketSend);
-            System.out.println("currentTime before: " + currentTime);
-            System.out.println("MSS: " + MSS);
-            currentRTT= currentTime - cTS;
 
-            if(currentRTT<EbaseRTT)
-                EbaseRTT=currentRTT;
+            controlRate(cTS, tSPacketSend);
 
-            deltaRTT=currentRTT-EbaseRTT;
+            double latency = (double) cTS - tSPacketSend;
 
-            RTTElapsed= currentRTT <= 0 ? 0 : (( currentTime - ElastFeedbackTime ) / currentRTT);
+            double transferRate = ((double)(MSS * EhopCount) / latency) ;
 
-            System.out.println("currentTime: " + currentTime + " ElastFeedbackTime: " + ElastFeedbackTime + " currentRTT:" + currentRTT);
-
-            ElastFeedbackTime=currentTime;
-
-            rateQuantum= Math.min( currentRTT <= 0 ? 0 : (MSS/currentRTT),FOutRouterRate/QF);
-
-            System.out.println("rateQuantum: " + rateQuantum);
-            System.out.println("RTTElapsed: " + RTTElapsed);
-            if(Fphase == 0) {
-                if(deltaRTT*FInRouterRate < MSS * EhopCount) {
-                    FInRouterRate = FInRouterRate * (long) (Math.pow(2, RTTElapsed / 1000));
-                    System.out.println("Slow Start rate: " + FInRouterRate);
-                    new Toaster().showToast("Entering a SLOW START RATE");
-                    if(Leaky.t1>=300) Leaky.t1-=300;
-                } else {
-                    Fphase = 1;
-                    System.out.println("Avoid Congestion Now: " + FInRouterRate);
-                    new Toaster().showToast("Avoiding Congestion NOW");
-                    Leaky.t1+=1000;
-                }
+            if(count > 1) {
+                double difference = (double)((cTS - deliveryTimeDifference) / 1000);
+                System.out.println("difference: " + difference);
+                RateControlMonitor.add(new RateSeriesDataModel(count, transferRate), false);
+                deliveryTimeDifference = cTS;
             } else {
-                if(deltaRTT * FInRouterRate < MSS * EhopCount) {
-                    FInRouterRate = FInRouterRate + rateQuantum * RTTElapsed;
-                    Fphase = 0;
-                    new Toaster().showToast("Entering Back to SLOW START RATE");
-                    System.out.println("Back to Slow Start rate: " + FInRouterRate);
-                    if(Leaky.t1>=300) Leaky.t1-=300;
-                } else {
-                    FInRouterRate = FInRouterRate - rateQuantum;
-                    new Toaster().showToast("Continue Avoiding Congestion");
-                    System.out.println("Continue Avoiding Congestion: " + FInRouterRate);
-                    Leaky.t1+=300;
-                }
+                deliveryTimeDifference = cTS;
             }
 
-            double transferRate = ((double)(MSS * EhopCount) / (double) (cTS - tSPacketSend)) ;
-            RateControlMonitor.add(new RateSeriesDataModel(count, transferRate), false);
-            System.out.println("transferRate: " + transferRate + "Bytes/ms");
+            System.out.println("transferRate: " + transferRate + "Bytes/ms" + " latency: " + latency);
+        }
+    }
+
+    void controlRate(long cTS, long tSPacketSend) {
+        System.out.println("currentTime on outRouter feedback: " + cTS + " Time Packet Send at inRouter: " + tSPacketSend);
+        System.out.println("currentTime before: " + currentTime);
+        System.out.println("MSS: " + MSS);
+        currentRTT= currentTime - cTS;
+
+        if(currentRTT<EbaseRTT)
+            EbaseRTT=currentRTT;
+
+        deltaRTT=currentRTT-EbaseRTT;
+
+        RTTElapsed= currentRTT <= 0 ? 0 : (( currentTime - ElastFeedbackTime ) / currentRTT);
+
+        System.out.println("currentTime: " + currentTime + " ElastFeedbackTime: " + ElastFeedbackTime + " currentRTT:" + currentRTT);
+
+        ElastFeedbackTime=currentTime;
+
+        rateQuantum= Math.min( currentRTT <= 0 ? 0 : (MSS/currentRTT),FOutRouterRate/QF);
+
+        System.out.println("rateQuantum: " + rateQuantum);
+        System.out.println("RTTElapsed: " + RTTElapsed);
+        if(Fphase == 0) {
+            if(deltaRTT*FInRouterRate < MSS * EhopCount) {
+                FInRouterRate = FInRouterRate * (long) (Math.pow(2, RTTElapsed / 1000));
+                System.out.println("Slow Start rate: " + FInRouterRate);
+                new Toaster().showToast("Entering a SLOW START RATE");
+                if(Leaky.t1>=300) Leaky.t1-=300;
+            } else {
+                Fphase = 1;
+                System.out.println("Avoid Congestion Now: " + FInRouterRate);
+                new Toaster().showToast("Avoiding Congestion NOW");
+                Leaky.t1+=300;
+            }
+        } else {
+            if(deltaRTT * FInRouterRate < MSS * EhopCount) {
+                FInRouterRate = FInRouterRate + rateQuantum * RTTElapsed;
+                Fphase = 0;
+                new Toaster().showToast("Entering Back to SLOW START RATE");
+                System.out.println("Back to Slow Start rate: " + FInRouterRate);
+                if(Leaky.t1>=300) Leaky.t1-=300;
+            } else {
+                FInRouterRate = FInRouterRate - rateQuantum;
+                new Toaster().showToast("Continue Avoiding Congestion");
+                System.out.println("Continue Avoiding Congestion: " + FInRouterRate);
+                Leaky.t1+=300;
+            }
         }
     }
 }

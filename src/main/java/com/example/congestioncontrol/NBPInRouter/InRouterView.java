@@ -300,7 +300,7 @@ class B extends Thread
         {
             Leaky l=new Leaky(i1);
             java.util.Timer t1=new java.util.Timer();
-            t1.schedule(l,10000,1000);
+            t1.schedule(l,1000,1000);
         }
         catch(Exception e){}
     }

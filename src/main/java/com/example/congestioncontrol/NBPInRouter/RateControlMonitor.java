@@ -35,13 +35,12 @@ public class RateControlMonitor extends Application {
 //        }
 //        System.out.println("data: " + data);
         Platform.runLater(() -> {
-            seriesDataObservableList.add(x.intValue() - 1, data);
+            seriesDataObservableList.add(x.intValue() - 2, data);
         });
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-
 
         stage.setTitle("RateControl Line Chart");
         //defining the axes
@@ -62,7 +61,7 @@ public class RateControlMonitor extends Application {
 
         lineChart.setTitle("Rate Control Monitoring, " + new Date().toLocaleString());
         //defining a series
-//        yAxis.setTickUnit();
+//        yAxis.setTickUnit(0.25);
         series = new XYChart.Series();
 
         series.setName("Packet Transfer Rate");
@@ -122,7 +121,5 @@ public class RateControlMonitor extends Application {
 
         stage.setScene(scene);
         stage.show();
-
-        new Toaster().showToast("Jeffrey");
     }
 }
